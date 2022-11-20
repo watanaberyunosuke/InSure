@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Homepage</title>
+    <link rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+			integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+			crossorigin="anonymous" />
+</head>
+<body>
+    <nav th:fragment="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" th:href="@{/portal}">InSure</a>
+        </div>
+
+        <a class="navbar-link" th:href="@{/policy}">Policy</a>
+        <a class="navbar-link" th:href="@{/phr}">Policy Holder Records</a>
+        <a class="navbar-link" th:href="@{/customer}">Customer</a>
+        <a class="navbar-link" th:href="@{/user}">Staff</a>
+    </div>
+</nav>
+    <h1>All Customers</h1>
+    <p><button class="button" onclick="location.href='/portal'">Go back</button></p>
+    <p><button class="button" onclick="location.href='/customer/new'">New Customer</button></p>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Customer ID</th>
+                <th>Customer Name</th>
+                <th>Customer Email</th>
+                <th>Customer Address</th>
+                <th>Customer Phone</th>
+                <th>Customer Birthday</th>
+                <th>Customer Employment</th>
+                <th>Customer Sex</th>
+                <th>Customer Risk Rate</th>
+            </tr>
+        </thead>
+        <div th:if="${#lists.isEmpty(customers)}" >
+            <th>No customer in system</th>
+        </div>
+
+        <tbody>
+            <tr th:each="customer: ${customers}">
+                <td th:text="${customer.customerId.toString()}" />
+                <td th:text="${customer.customerFname} + ${customer.customerLname}" />
+                <td th:text="${customer.customerEmail}" />
+                <td th:text="${customer.customerAddress}" />
+                <td th:text="${customer.customerPhone}" />
+                <td th:text="${customer.customerBirth}" />
+                <td th:text="${customer.customerSex}" />
+                <td th:text="${customer.customerRiskRate}" />
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

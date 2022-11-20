@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Policy Type Homepage</title>
+    <link rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+			integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+			crossorigin="anonymous" />
+</head>
+<body>
+    <nav th:fragment="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" th:href="@{/portal}">InSure</a>
+        </div>
+
+        <a class="navbar-link" th:href="@{/policy}">Policy</a>
+        <a class="navbar-link" th:href="@{/phr}">Policy Holder Records</a>
+        <a class="navbar-link" th:href="@{/customer}">Customer</a>
+        <a class="navbar-link" th:href="@{/user}">Staff</a>
+    </div>
+</nav>
+    <h1>All Policy Types</h1>
+    <p><button class="button" onclick="location.href='/policy'">Go back</button></p>
+    <p><button class="button" onclick="location.href='/policy/policyType/new'">New Policy Type</button>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Policy Type ID</th>
+                <th>Policy Name</th>
+            </tr>
+        </thead>
+        <div th:if="${#lists.isEmpty(policyTypes)}" >
+            <th>No policy type in system</th>
+        </div>
+
+        <tbody>
+            <tr th:each="policyType: ${policyTypes}">
+
+                <td th:text="${policyType.policyTypeId.toString()}" />
+                <td th:text="${policyType.policyTypeName}" />
+            </tr>
+
+        </tbody>
+    </table>
+</body>
+</html>

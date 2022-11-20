@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Homepage</title>
+    <link rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+			integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+			crossorigin="anonymous" />
+</head>
+<body>
+    <h1>All Staffs</h1>
+    <p><button class="button" onclick="location.href='/portal'">Go back</button></p>
+    <p><button class="button" onclick="location.href='/user/new'">New User</button>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>User Name</th>
+                <th>User Email</th>
+                <th>User Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <div th:if="${#lists.isEmpty(users)}" >
+            <th>No User in system</th>
+        </div>
+
+        <tbody>
+            <tr th:each="user: ${users}">
+                <td th:text="${user.userId.toString()}" />
+                <td th:text="${user.userFname} + ${user.userLname}" />
+                <td th:text="${user.userEmail}" />
+                <td th:text="${user.userType}" />
+            </tr>
+        </tbody>
+    </table>
+    <div>
+
+    </div>
+</body>
+</html>

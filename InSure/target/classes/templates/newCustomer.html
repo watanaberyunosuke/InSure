@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Customer</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+          crossorigin="anonymous" />
+</head>
+    <body>
+        <nav th:fragment="navbar" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" th:href="@{/portal}">InSure</a>
+            </div>
+
+            <a class="navbar-link" th:href="@{/policy}">Policy</a>
+            <a class="navbar-link" th:href="@{/phr}">Policy Holder Records</a>
+            <a class="navbar-link" th:href="@{/customer}">Customer</a>
+            <a class="navbar-link" th:href="@{/user}">Staff</a>
+        </div>
+    </nav>
+        <h1>Create New Customer</h1>
+
+        <form method="post" action="#" th:action="@{/customer/addnew}" th:object="${newCustomerItem}">
+            <label for="CustomerFName">Customer First Name</label>
+            <input type="text" th:field="*{customerFname}" id="CustomerFName"><br>
+
+            <label for="CustomerLName">Customer Last Name</label>
+            <input type="text" th:field="*{customerLname}" id="CustomerLName"> <br>
+
+            <label for="CustomerEmail">Customer Email</label>
+            <input type="email" th:field="*{customerEmail}" id="CustomerEmail"> <br>
+
+            <label for="CustomerAddress">Customer Address</label>
+            <textarea type="text" th:field="*{customerAddress}" id="CustomerAddress" > </textarea> <br>
+
+            <label for="CustomerPhone">Customer Phone</label>
+            <input type="number" th:field="*{customerPhone}" id="CustomerPhone"> <br>
+
+            <label for="CustomerBirth">Customer Birthday</label>
+            <input type="date" th:field="*{customerBirth}" id="CustomerBirth"/> <br>
+
+            <label for="CustomerEmployment">Customer Employment</label>
+            <input type="text" th:field="*{customerEmployment}" id="CustomerEmployment"/> <br>
+
+            <label for="CustomerSex">Customer Sex</label>
+            <input type="text" th:field="*{customerSex}" id="CustomerSex"/> <br>
+
+            <label for="CustomerRisk">Customer Risk</label>
+            <input type="number" th:field="*{customerRiskRate}" id="CustomerRisk" />
+
+             <p><input type="submit" value="Submit" />
+                 <input type="reset" value="Reset" /></p>
+        </form>
+    </body>
+</html>
